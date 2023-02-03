@@ -1,61 +1,25 @@
+import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import PokeCard from './components/PokeCard';
+import { getPokemons } from './redux/pokemons/pokemons';
 
 function App() {
-  const pokemons = [
-    {
-      name: 'clefairy',
-      id: 1,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-      height: 23,
-      weight: 64,
-      base_experience: 5,
-    },
-    {
-      name: 'clefairy',
-      id: 2,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-      height: 23,
-      weight: 64,
-      base_experience: 5,
-    },
-    {
-      name: 'clefairy',
-      id: 3,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-    },
-    {
-      name: 'clefairy',
-      id: 4,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-    },
-    {
-      name: 'clefairy',
-      id: 5,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-    },
-  ];
+  const pokemons = useSelector((state) => state.pokemons.data);
+  const status = useSelector((state) => state.pokemons.status);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (status === 'idle') dispatch(getPokemons());
+  }, [status, dispatch]);
+
   return (
     <Container className="p-2">
-      <Row md={4}>
+      <h1>Pokeverse</h1>
+      <Row lg={4}>
         {pokemons.map((poke) => (
-          <Col className="p-1">
-            <PokeCard key={poke.id} pokemon={poke} />
+          <Col className="p-1" key={poke.id}>
+            <PokeCard pokemon={poke} />
           </Col>
         ))}
       </Row>
