@@ -12,46 +12,34 @@ function App() {
       },
       height: 23,
       weight: 64,
-      base_experience: 5,
+      exp: 5,
     },
     {
       name: 'clefairy',
-      id: 2,
+      id: 1,
       sprites: {
         front_default:
           'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
       },
       height: 23,
       weight: 64,
-      base_experience: 5,
+      exp: 5,
     },
     {
       name: 'clefairy',
-      id: 3,
+      id: 1,
       sprites: {
         front_default:
           'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
       },
-    },
-    {
-      name: 'clefairy',
-      id: 4,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-    },
-    {
-      name: 'clefairy',
-      id: 5,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
+      height: 23,
+      weight: 64,
+      exp: 5,
     },
   ];
   return (
     <Container className="p-2">
+      <h1>Pokeverse</h1>
       <Row md={4}>
         {pokemons.map((poke) => (
           <Col className="p-1">
