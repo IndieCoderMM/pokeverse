@@ -16,6 +16,7 @@ function App() {
   return (
     <Container className="p-2">
       <h1>Pokeverse</h1>
+      <h1>Pokeverse</h1>
       <Row lg={4}>
         {pokemons.map((poke) => (
           <Col className="p-1" key={poke.id}>
