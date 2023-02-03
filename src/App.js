@@ -4,36 +4,14 @@ import PokeCard from './components/PokeCard';
 function App() {
   const pokemons = [
     {
-      name: 'clefairy',
       id: 1,
+      name: 'clefairy',
       sprites: {
         front_default:
           'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
       },
-      height: 23,
-      weight: 64,
-      exp: 5,
-    },
-    {
-      name: 'clefairy',
-      id: 1,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-      height: 23,
-      weight: 64,
-      exp: 5,
-    },
-    {
-      name: 'clefairy',
-      id: 1,
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-      height: 23,
-      weight: 64,
+      height: 13,
+      weight: 44,
       exp: 5,
     },
   ];
@@ -42,8 +20,8 @@ function App() {
       <h1>Pokeverse</h1>
       <Row md={4}>
         {pokemons.map((poke) => (
-          <Col className="p-1">
-            <PokeCard key={poke.id} pokemon={poke} />
+          <Col className="p-1" key={poke.id}>
+            <PokeCard pokemon={poke} />
           </Col>
         ))}
       </Row>
