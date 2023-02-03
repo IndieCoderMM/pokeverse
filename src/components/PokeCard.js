@@ -1,8 +1,8 @@
 import React from 'react';
-import { Badge, Card, ListGroup } from 'react-bootstrap';
+import { Badge, Button, Card, ListGroup } from 'react-bootstrap';
 
 const PokeCard = ({ pokemon }) => {
-  const { name, sprites, exp, height, weight } = pokemon;
+  const { name, sprites, exp, height, weight, favorite } = pokemon;
   return (
     <Card>
       <Card.Img
@@ -23,6 +23,15 @@ const PokeCard = ({ pokemon }) => {
             Weight <Badge pill>{weight}</Badge>
           </ListGroup.Item>
         </ListGroup>
+        {favorite ? (
+          <Button variant="danger" className="mt-1">
+            Remove Favorite
+          </Button>
+        ) : (
+          <Button variant="primary" className="mt-1">
+            Add to Favorite
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );
