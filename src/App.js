@@ -9,6 +9,8 @@ function App() {
   const status = useSelector((state) => state.pokemons.status);
   const dispatch = useDispatch();
 
+  const totalFavorite = pokemons.filter((p) => p.favorite).length;
+
   useEffect(() => {
     if (status === 'idle') dispatch(getPokemons());
   }, [status, dispatch]);
@@ -16,7 +18,7 @@ function App() {
   return (
     <Container className="p-2">
       <h1>Pokeverse</h1>
-      <h1>Pokeverse</h1>
+      <h3>Favorites : ❤ {totalFavorite}</h3>
       <Row lg={4}>
         {pokemons.map((poke) => (
           <Col className="p-1" key={poke.id}>

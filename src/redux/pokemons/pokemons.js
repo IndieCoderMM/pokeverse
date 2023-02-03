@@ -23,6 +23,7 @@ export const getPokemons = createAsyncThunk('pokemons/get', async () => {
           weight,
           height,
           exp,
+          favorite: false,
         };
       }),
     );
@@ -42,6 +43,12 @@ const initialState = {
 const pokeSlice = createSlice({
   name: 'pokemons',
   initialState,
+  reducers: {
+    toggleFavorite(state, action) {
+      const pokemon = state.data.find((p) => p.id === action.payload);
+      pokemon.favorite = !pokemon.favorite;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getPokemons.pending, (state, action) => {
@@ -57,5 +64,7 @@ const pokeSlice = createSlice({
       });
   },
 });
+
+export const { toggleFavorite } = pokeSlice.actions;
 
 export default pokeSlice.reducer;
