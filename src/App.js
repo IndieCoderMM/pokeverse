@@ -9,12 +9,11 @@ function App() {
   const status = useSelector((state) => state.pokemons.status);
   const dispatch = useDispatch();
 
-  const totalFavorite = pokemons.filter((p) => p.favorite).length;
-
   useEffect(() => {
     if (status === 'idle') dispatch(getPokemons());
   }, [status, dispatch]);
 
+  const totalFavorite = pokemons.filter((p) => p.favorite).length;
   return (
     <Container className="p-2">
       <h1>Pokeverse</h1>
