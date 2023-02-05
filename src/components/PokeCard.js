@@ -1,8 +1,17 @@
 import React from 'react';
 import { Badge, Button, Card, ListGroup } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { toggleFavorite } from '../redux/pokemons/pokemons';
 
 const PokeCard = ({ pokemon }) => {
-  const { name, sprites, exp, height, weight, favorite } = pokemon;
+  const { id, name, sprites, exp, height, weight, favorite } = pokemon;
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(toggleFavorite(id));
+  };
+
   return (
     <Card>
       <Card.Img
@@ -24,11 +33,11 @@ const PokeCard = ({ pokemon }) => {
           </ListGroup.Item>
         </ListGroup>
         {favorite ? (
-          <Button variant="danger" className="mt-1">
+          <Button variant="danger" className="mt-1" onClick={handleClick}>
             Remove Favorite
           </Button>
         ) : (
-          <Button variant="primary" className="mt-1">
+          <Button variant="primary" className="mt-1" onClick={handleClick}>
             Add to Favorite
           </Button>
         )}

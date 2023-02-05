@@ -1,23 +1,23 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import PokeCard from './components/PokeCard';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPokemons } from './redux/pokemons/pokemons';
 
 function App() {
-  const pokemons = [
-    {
-      id: 1,
-      name: 'clefairy',
-      sprites: {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-      },
-      height: 13,
-      weight: 44,
-      exp: 5,
-    },
-  ];
+  const pokemons = useSelector((state) => state.pokemons.data);
+  const status = useSelector((state) => state.pokemons.status);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (status === 'idle') dispatch(getPokemons());
+  }, [status, dispatch]);
+
+  const totalFavorite = pokemons.filter((p) => p.favorite).length;
   return (
     <Container className="p-2">
       <h1>Pokeverse</h1>
+      <h3>Favorites : ❤ {totalFavorite}</h3>
       <Row md={4}>
         {pokemons.map((poke) => (
           <Col className="p-1" key={poke.id}>
