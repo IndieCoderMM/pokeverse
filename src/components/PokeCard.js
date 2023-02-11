@@ -8,7 +8,7 @@ const PokeCard = ({ pokemon }) => {
       <Card.Img
         src={sprites.front_default}
         variant="top"
-        style={{ backgroundColor: '#9b59b6' }}
+        className="bg-light"
       />
       <Card.Body>
         <Card.Title>{name.toUpperCase()}</Card.Title>
